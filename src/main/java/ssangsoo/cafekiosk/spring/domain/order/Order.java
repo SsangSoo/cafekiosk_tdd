@@ -45,7 +45,7 @@ public class Order extends BaseEntity {
                 .collect(Collectors.toList());
     }
 
-    private int calculateTotalPrice(final List<Product> products) {
+    private int calculateTotalPrice(List<Product> products) {
         return products.stream()
                 .mapToInt(Product::getPrice)
                 .sum();
