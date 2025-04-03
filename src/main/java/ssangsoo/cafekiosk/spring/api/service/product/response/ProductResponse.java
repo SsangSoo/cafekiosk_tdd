@@ -2,9 +2,9 @@ package ssangsoo.cafekiosk.spring.api.service.product.response;
 
 import lombok.Builder;
 import lombok.Getter;
-import ssangsoo.cafekiosk.spring.domain.Product;
-import ssangsoo.cafekiosk.spring.domain.ProductSellingStatus;
-import ssangsoo.cafekiosk.spring.domain.ProductType;
+import ssangsoo.cafekiosk.spring.domain.product.Product;
+import ssangsoo.cafekiosk.spring.domain.product.ProductSellingStatus;
+import ssangsoo.cafekiosk.spring.domain.product.ProductType;
 
 @Getter
 public class ProductResponse {

@@ -1,4 +1,4 @@
-package ssangsoo.cafekiosk.spring.domain;
+package ssangsoo.cafekiosk.spring.domain.product;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

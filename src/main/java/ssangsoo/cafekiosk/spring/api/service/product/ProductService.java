@@ -3,9 +3,9 @@ package ssangsoo.cafekiosk.spring.api.service.product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ssangsoo.cafekiosk.spring.api.service.product.response.ProductResponse;
-import ssangsoo.cafekiosk.spring.domain.Product;
-import ssangsoo.cafekiosk.spring.domain.ProductRepository;
-import ssangsoo.cafekiosk.spring.domain.ProductSellingStatus;
+import ssangsoo.cafekiosk.spring.domain.product.Product;
+import ssangsoo.cafekiosk.spring.domain.product.ProductRepository;
+import ssangsoo.cafekiosk.spring.domain.product.ProductSellingStatus;
 
 import java.util.List;
 import java.util.stream.Collectors;

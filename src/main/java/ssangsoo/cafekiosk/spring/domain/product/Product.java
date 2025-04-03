@@ -1,7 +1,8 @@
-package ssangsoo.cafekiosk.spring.domain;
+package ssangsoo.cafekiosk.spring.domain.product;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Id;
@@ -29,4 +30,12 @@ public class Product extends BaseEntity {
 
     private int price;
 
+    @Builder
+    private Product(final String productNumber, final ProductType type, final ProductSellingStatus sellingStatus, final String name, final int price) {
+        this.productNumber = productNumber;
+        this.type = type;
+        this.sellingStatus = sellingStatus;
+        this.name = name;
+        this.price = price;
+    }
 }
