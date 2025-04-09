@@ -1,30 +1,28 @@
 package ssangsoo.cafekiosk.spring.api.service.product;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ssangsoo.cafekiosk.spring.api.controller.product.dto.request.RegisterProductRequest;
 import ssangsoo.cafekiosk.spring.api.service.product.response.ProductResponse;
 import ssangsoo.cafekiosk.spring.domain.product.Product;
 import ssangsoo.cafekiosk.spring.domain.product.ProductRepository;
-import ssangsoo.cafekiosk.spring.domain.product.ProductSellingStatus;
 
-import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
-@Slf4j
+@Transactional
 @RequiredArgsConstructor
 @Service
-public class ProductService implements ProductUsecase {
+public class ProductCommandService implements ProductCommandUsecase {
 
     private final ProductRepository productRepository;
 
-    @Override
-    public ProductResponse registerProduct(final RegisterProductRequest request) {
-        String latestProductNumber = createNextProductNumber();
 
-        Product product = Product.of(request, latestProductNumber);
+    @Override
+    public ProductResponse registerProduct(RegisterProductRequest request) {
+        String nextProductNumber = createNextProductNumber();
+
+        Product product = request.toEntity(nextProductNumber);
         Product savedProduct = productRepository.save(product);
 
         return ProductResponse.of(savedProduct);
@@ -43,14 +41,4 @@ public class ProductService implements ProductUsecase {
         return String.format("%03d", nextProductNumberInt);
 
     }
-
-    public List<ProductResponse> retrieveSellingProducts() {
-        List<Product> products = productRepository.findAllBySellingStatusIn(ProductSellingStatus.forDisplay());
-
-        return products.stream()
-                .map(ProductResponse::of)
-                .collect(Collectors.toList());
-    }
-
-
 }

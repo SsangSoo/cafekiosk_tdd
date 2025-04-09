@@ -40,14 +40,5 @@ public class Product extends BaseEntity {
         this.price = price;
     }
 
-    public static Product of(RegisterProductRequest request, String productNumber) {
-        return Product.builder()
-                .productNumber(productNumber)
-                .name(request.getName())
-                .type(request.getType())
-                .sellingStatus(request.getSellingStatus())
-                .price(request.getPrice())
-                .build();
-    }
 
 }

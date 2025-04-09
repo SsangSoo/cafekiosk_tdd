@@ -3,7 +3,7 @@ package ssangsoo.cafekiosk.spring.api.service.order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ssangsoo.cafekiosk.spring.api.controller.order.request.RegisterOrderRequest;
+import ssangsoo.cafekiosk.spring.api.controller.order.dto.request.RegisterOrderRequest;
 import ssangsoo.cafekiosk.spring.api.service.order.response.OrderResponse;
 import ssangsoo.cafekiosk.spring.domain.order.Order;
 import ssangsoo.cafekiosk.spring.domain.order.OrderRepository;

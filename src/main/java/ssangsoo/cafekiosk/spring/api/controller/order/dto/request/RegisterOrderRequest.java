@@ -1,4 +1,4 @@
-package ssangsoo.cafekiosk.spring.api.controller.order.request;
+package ssangsoo.cafekiosk.spring.api.controller.order.dto.request;
 
 
 import lombok.Builder;

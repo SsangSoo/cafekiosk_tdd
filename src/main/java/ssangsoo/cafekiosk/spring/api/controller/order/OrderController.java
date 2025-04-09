@@ -4,8 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ssangsoo.cafekiosk.spring.api.controller.order.request.RegisterOrderRequest;
-import ssangsoo.cafekiosk.spring.api.service.order.OrderService;
+import ssangsoo.cafekiosk.spring.api.controller.order.dto.request.RegisterOrderRequest;
 import ssangsoo.cafekiosk.spring.api.service.order.OrderUsecase;
 import ssangsoo.cafekiosk.spring.api.service.order.response.OrderResponse;
 
