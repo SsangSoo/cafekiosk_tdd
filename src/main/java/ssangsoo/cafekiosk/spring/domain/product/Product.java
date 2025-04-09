@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Id;
 import ssangsoo.cafekiosk.spring.BaseEntity;
+import ssangsoo.cafekiosk.spring.api.controller.product.dto.request.RegisterProductRequest;
 
 @Getter
 @Entity
@@ -38,4 +39,15 @@ public class Product extends BaseEntity {
         this.name = name;
         this.price = price;
     }
+
+    public static Product of(RegisterProductRequest request, String productNumber) {
+        return Product.builder()
+                .productNumber(productNumber)
+                .name(request.getName())
+                .type(request.getType())
+                .sellingStatus(request.getSellingStatus())
+                .price(request.getPrice())
+                .build();
+    }
+
 }

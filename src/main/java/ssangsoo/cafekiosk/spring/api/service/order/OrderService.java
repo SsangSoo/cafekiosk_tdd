@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 @Service
-public class OrderService {
+public class OrderService implements OrderUsecase {
 
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;

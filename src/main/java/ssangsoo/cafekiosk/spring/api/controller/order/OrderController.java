@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ssangsoo.cafekiosk.spring.api.controller.order.request.RegisterOrderRequest;
 import ssangsoo.cafekiosk.spring.api.service.order.OrderService;
+import ssangsoo.cafekiosk.spring.api.service.order.OrderUsecase;
 import ssangsoo.cafekiosk.spring.api.service.order.response.OrderResponse;
 
 import java.time.LocalDateTime;
@@ -14,11 +15,11 @@ import java.time.LocalDateTime;
 @RestController
 public class OrderController {
 
-    private final OrderService orderService;
+    private final OrderUsecase orderUsecase;
 
     @PostMapping("/api/v1/orders/new")
     public OrderResponse registerOrder(@RequestBody RegisterOrderRequest request)  {
         LocalDateTime registeredDateTime = LocalDateTime.now();
-        return orderService.registerOrder(request, registeredDateTime);
+        return orderUsecase.registerOrder(request, registeredDateTime);
     }
 }
