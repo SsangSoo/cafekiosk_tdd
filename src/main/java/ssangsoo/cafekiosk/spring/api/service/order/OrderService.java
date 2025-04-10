@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ssangsoo.cafekiosk.spring.api.controller.order.dto.request.RegisterOrderRequest;
+import ssangsoo.cafekiosk.spring.api.service.order.request.RegisterOrderServiceRequest;
 import ssangsoo.cafekiosk.spring.api.service.order.response.OrderResponse;
 import ssangsoo.cafekiosk.spring.domain.order.Order;
 import ssangsoo.cafekiosk.spring.domain.order.OrderRepository;
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 @Service
-public class OrderService implements OrderUsecase {
+public class OrderService implements OrderCommandUsecase {
 
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;
@@ -30,7 +31,7 @@ public class OrderService implements OrderUsecase {
     /**
      * 재고 감소 -> 동시성 고민
      */
-    public OrderResponse registerOrder(RegisterOrderRequest request, LocalDateTime registeredDateTime) {
+    public OrderResponse registerOrder(RegisterOrderServiceRequest request, LocalDateTime registeredDateTime) {
         List<String> productNumbers = request.getProductNumbers();
         List<Product> products = findProductBy(productNumbers);
 
