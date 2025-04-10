@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ssangsoo.cafekiosk.spring.api.controller.product.dto.request.RegisterProductRequest;
+import ssangsoo.cafekiosk.spring.api.service.product.request.RegisterProductServiceRequest;
 import ssangsoo.cafekiosk.spring.api.service.product.response.ProductResponse;
 import ssangsoo.cafekiosk.spring.domain.product.Product;
 import ssangsoo.cafekiosk.spring.domain.product.ProductRepository;
@@ -19,7 +20,7 @@ public class ProductCommandService implements ProductCommandUsecase {
 
 
     @Override
-    public ProductResponse registerProduct(RegisterProductRequest request) {
+    public ProductResponse registerProduct(RegisterProductServiceRequest request) {
         String nextProductNumber = createNextProductNumber();
 
         Product product = request.toEntity(nextProductNumber);

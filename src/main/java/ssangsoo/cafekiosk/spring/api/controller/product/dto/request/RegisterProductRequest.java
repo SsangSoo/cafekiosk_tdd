@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Positive;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import ssangsoo.cafekiosk.spring.api.service.product.request.RegisterProductServiceRequest;
 import ssangsoo.cafekiosk.spring.domain.product.Product;
 import ssangsoo.cafekiosk.spring.domain.product.ProductSellingStatus;
 import ssangsoo.cafekiosk.spring.domain.product.ProductType;
@@ -34,13 +35,14 @@ public class RegisterProductRequest {
         this.price = price;
     }
 
-    public Product toEntity(String nextProductNumber) {
-        return Product.builder()
-                .productNumber(nextProductNumber)
+    public RegisterProductServiceRequest toServiceRequest() {
+        return RegisterProductServiceRequest.builder()
                 .type(type)
                 .sellingStatus(sellingStatus)
                 .name(name)
                 .price(price)
                 .build();
     }
+
+
 }

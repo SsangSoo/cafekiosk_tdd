@@ -22,7 +22,7 @@ public class ProductCommandController {
 
     @PostMapping("/api/v1/products/new")
     public ApiResponse<ProductResponse> registerProduct(@Valid @RequestBody RegisterProductRequest request) {
-        return ApiResponse.of(productCommandUsecase.registerProduct(request));
+        return ApiResponse.of(productCommandUsecase.registerProduct(request.toServiceRequest()));
     }
 
 
