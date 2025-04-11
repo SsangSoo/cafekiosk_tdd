@@ -3,7 +3,6 @@ package ssangsoo.cafekiosk.spring.api.service.order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ssangsoo.cafekiosk.spring.api.controller.order.dto.request.RegisterOrderRequest;
 import ssangsoo.cafekiosk.spring.api.service.order.request.RegisterOrderServiceRequest;
 import ssangsoo.cafekiosk.spring.api.service.order.response.OrderResponse;
 import ssangsoo.cafekiosk.spring.domain.order.Order;
@@ -22,7 +21,7 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 @Service
-public class OrderService implements OrderCommandUsecase {
+public class OrderCommandService implements OrderCommandUsecase {
 
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;
@@ -39,9 +38,10 @@ public class OrderService implements OrderCommandUsecase {
 
         // Order
         Order order = Order.create(products, registeredDateTime);
-        Order savedOrder = orderRepository.save(order);
-        return OrderResponse.of(savedOrder);
+        orderRepository.save(order);
+        return OrderResponse.of(order);
     }
+
 
     private void deductStockQuantities(final List<Product> products) {
         List<String> stockProductNumbers = extractStockProductNumbers(products);

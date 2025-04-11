@@ -26,7 +26,7 @@ import static ssangsoo.cafekiosk.spring.domain.product.ProductType.*;
 @ActiveProfiles("test")
 //@Transactional
 @SpringBootTest
-class OrderServiceTest {
+class OrderCommandServiceTest {
 
     @Autowired
     private ProductRepository productRepository;
@@ -41,7 +41,7 @@ class OrderServiceTest {
     private StockRepository stockRepository;
 
     @Autowired
-    private OrderService orderService;
+    private OrderCommandUsecase orderService;
 
     @AfterEach
     void tearDown() {
@@ -50,6 +50,7 @@ class OrderServiceTest {
         orderRepository.deleteAllInBatch();
         stockRepository.deleteAllInBatch();
     }
+
 
     @Test
     @DisplayName("주문번호 리스트를 받아 주문을 생성한다.")
@@ -67,7 +68,7 @@ class OrderServiceTest {
 
         //
 
-        OrderResponse orderResponse = orderService.registerOrder(request, registeredDateTime);
+        OrderResponse orderResponse = orderService.registerOrder(request.toServiceRequest(), registeredDateTime);
 
         // then
         assertThat(orderResponse.getId()).isNotNull();
@@ -98,7 +99,7 @@ class OrderServiceTest {
                 .build();
 
         // when
-        OrderResponse orderResponse = orderService.registerOrder(request, registeredDateTime);
+        OrderResponse orderResponse = orderService.registerOrder(request.toServiceRequest(), registeredDateTime);
 
         // then
         assertThat(orderResponse.getId()).isNotNull();
@@ -135,7 +136,7 @@ class OrderServiceTest {
                 .build();
 
         // when
-        OrderResponse orderResponse = orderService.registerOrder(request, registeredDateTime);
+        OrderResponse orderResponse = orderService.registerOrder(request.toServiceRequest(), registeredDateTime);
 
         // then
         assertThat(orderResponse.getId()).isNotNull();
@@ -182,7 +183,7 @@ class OrderServiceTest {
                 .build();
 
         // when // then
-        assertThatThrownBy(() -> orderService.registerOrder(request, registeredDateTime))
+        assertThatThrownBy(() -> orderService.registerOrder(request.toServiceRequest(), registeredDateTime))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("재고가 부족한 상품이 있습니다.");
     }

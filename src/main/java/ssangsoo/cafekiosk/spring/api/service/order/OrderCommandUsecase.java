@@ -1,6 +1,5 @@
 package ssangsoo.cafekiosk.spring.api.service.order;
 
-import ssangsoo.cafekiosk.spring.api.controller.order.dto.request.RegisterOrderRequest;
 import ssangsoo.cafekiosk.spring.api.service.order.request.RegisterOrderServiceRequest;
 import ssangsoo.cafekiosk.spring.api.service.order.response.OrderResponse;
 

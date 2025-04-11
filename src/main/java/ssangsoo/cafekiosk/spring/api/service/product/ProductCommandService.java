@@ -24,9 +24,9 @@ public class ProductCommandService implements ProductCommandUsecase {
         String nextProductNumber = createNextProductNumber();
 
         Product product = request.toEntity(nextProductNumber);
-        Product savedProduct = productRepository.save(product);
+        productRepository.save(product);
 
-        return ProductResponse.of(savedProduct);
+        return ProductResponse.of(product);
     }
 
     private String createNextProductNumber() {
