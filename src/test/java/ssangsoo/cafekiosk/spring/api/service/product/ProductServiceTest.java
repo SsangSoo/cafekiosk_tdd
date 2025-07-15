@@ -1,8 +1,6 @@
 package ssangsoo.cafekiosk.spring.api.service.product;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -31,10 +29,24 @@ class ProductServiceTest {
     @Autowired
     private ProductRepository productRepository;
 
+    @BeforeAll
+    static void beforeAll() {
+        // before class
+    }
+
+    @BeforeEach
+    void setUp() {
+        // before method
+
+        // 각 테스트 입장에서 봤을 떄 : 아예 몰라도 테스트 내용을 이애하는 데에 문제가 없는가?
+        // 수정해도 모든 테스트에 영향을 주지 않는가?
+    }
+
     @AfterEach
     void tearDown() {
         productRepository.deleteAllInBatch();
     }
+
 
     @Test
     @DisplayName("신규 상품을 등록한다. 상품번호는 가장 최근 상품의 상품번호에서 1 증가한 값이다")
