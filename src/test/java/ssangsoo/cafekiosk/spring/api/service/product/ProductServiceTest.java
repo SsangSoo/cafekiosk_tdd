@@ -4,6 +4,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import ssangsoo.cafekiosk.spring.IntegrationTestSupport;
 import ssangsoo.cafekiosk.spring.api.controller.product.dto.request.RegisterProductRequest;
 import ssangsoo.cafekiosk.spring.api.service.product.response.ProductResponse;
 import ssangsoo.cafekiosk.spring.domain.product.Product;
@@ -19,9 +20,7 @@ import static org.assertj.core.api.Assertions.tuple;
 import static ssangsoo.cafekiosk.spring.domain.product.ProductSellingStatus.*;
 import static ssangsoo.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 
-@ActiveProfiles("test")
-@SpringBootTest
-class ProductServiceTest {
+class ProductServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductCommandUsecase productService;

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import ssangsoo.cafekiosk.spring.IntegrationTestSupport;
 import ssangsoo.cafekiosk.spring.api.controller.order.dto.request.RegisterOrderRequest;
 import ssangsoo.cafekiosk.spring.api.service.order.response.OrderResponse;
 import ssangsoo.cafekiosk.spring.domain.order.OrderRepository;
@@ -23,10 +24,7 @@ import static org.assertj.core.api.Assertions.*;
 import static ssangsoo.cafekiosk.spring.domain.product.ProductSellingStatus.*;
 import static ssangsoo.cafekiosk.spring.domain.product.ProductType.*;
 
-@ActiveProfiles("test")
-//@Transactional
-@SpringBootTest
-class OrderCommandServiceTest {
+class OrderCommandServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductRepository productRepository;

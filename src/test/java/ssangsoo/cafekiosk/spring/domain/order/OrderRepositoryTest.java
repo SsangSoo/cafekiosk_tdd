@@ -5,6 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import ssangsoo.cafekiosk.spring.IntegrationTestSupport;
 import ssangsoo.cafekiosk.spring.domain.orderproduct.OrderProductRepository;
 import ssangsoo.cafekiosk.spring.domain.product.Product;
 import ssangsoo.cafekiosk.spring.domain.product.ProductRepository;
@@ -18,8 +21,9 @@ import static ssangsoo.cafekiosk.spring.domain.order.OrderStatus.PAYMENT_COMPLET
 import static ssangsoo.cafekiosk.spring.domain.product.ProductSellingStatus.SELLING;
 import static ssangsoo.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 
-@DataJpaTest
-class OrderRepositoryTest {
+//@ActiveProfiles("test")
+//@DataJpaTest
+class OrderRepositoryTest extends IntegrationTestSupport {
 
     @Autowired
     private OrderRepository orderRepository;

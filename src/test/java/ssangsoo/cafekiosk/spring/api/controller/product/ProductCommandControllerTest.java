@@ -8,9 +8,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+import ssangsoo.cafekiosk.spring.ControllerTestSupport;
 import ssangsoo.cafekiosk.spring.api.controller.product.dto.request.RegisterProductRequest;
 import ssangsoo.cafekiosk.spring.api.service.product.ProductCommandUsecase;
-import ssangsoo.cafekiosk.spring.api.service.product.ProductQueryUsecase;
 import ssangsoo.cafekiosk.spring.domain.product.ProductSellingStatus;
 import ssangsoo.cafekiosk.spring.domain.product.ProductType;
 
@@ -18,19 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(controllers = ProductCommandController.class)
-class ProductCommandControllerTest {
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @MockitoBean
-    private ProductCommandUsecase productCommandUsecase;
-
-
+class ProductCommandControllerTest extends ControllerTestSupport {
 
     @Test
     @DisplayName("신규 상품을 등록한다.")

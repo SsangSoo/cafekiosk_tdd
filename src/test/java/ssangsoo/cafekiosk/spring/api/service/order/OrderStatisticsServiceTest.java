@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import ssangsoo.cafekiosk.spring.IntegrationTestSupport;
 import ssangsoo.cafekiosk.spring.client.mail.MailSendClient;
 import ssangsoo.cafekiosk.spring.domain.history.Mail.MailSendHistory;
 import ssangsoo.cafekiosk.spring.domain.history.Mail.MailSendHistoryRepository;
@@ -27,8 +28,7 @@ import static org.mockito.Mockito.*;
 import static ssangsoo.cafekiosk.spring.domain.product.ProductSellingStatus.SELLING;
 import static ssangsoo.cafekiosk.spring.domain.product.ProductType.*;
 
-@SpringBootTest
-class OrderStatisticsServiceTest {
+class OrderStatisticsServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private OrderStatisticsService orderStatisticsService;
@@ -45,8 +45,7 @@ class OrderStatisticsServiceTest {
     @Autowired
     private MailSendHistoryRepository mailSendHistoryRepository;
 
-    @MockitoBean
-    private MailSendClient mailSendClient;
+
 
 
     @AfterEach

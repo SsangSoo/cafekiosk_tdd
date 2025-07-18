@@ -17,11 +17,12 @@ import java.util.Objects;
 public class ProductCommandService implements ProductCommandUsecase {
 
     private final ProductRepository productRepository;
+    private final ProductNumberFactory productNumberFactory;
 
 
     @Override
     public ProductResponse registerProduct(RegisterProductServiceRequest request) {
-        String nextProductNumber = createNextProductNumber();
+        String nextProductNumber = productNumberFactory.createNextProductNumber();
 
         Product product = request.toEntity(nextProductNumber);
         productRepository.save(product);
@@ -29,17 +30,4 @@ public class ProductCommandService implements ProductCommandUsecase {
         return ProductResponse.of(product);
     }
 
-    private String createNextProductNumber() {
-        String latestProductNumber = productRepository.findLatestProductNumber();
-
-        if (Objects.isNull(latestProductNumber)) {
-            return "001";
-        }
-
-        int latestProductNumberInt = Integer.parseInt(latestProductNumber);
-        int nextProductNumberInt = latestProductNumberInt + 1;
-
-        return String.format("%03d", nextProductNumberInt);
-
-    }
 }

@@ -1,15 +1,10 @@
 package ssangsoo.cafekiosk.spring.api.controller.order;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import org.springframework.test.web.servlet.MockMvc;
+import ssangsoo.cafekiosk.spring.ControllerTestSupport;
 import ssangsoo.cafekiosk.spring.api.controller.order.dto.request.RegisterOrderRequest;
-import ssangsoo.cafekiosk.spring.api.service.order.OrderCommandUsecase;
 
 import java.util.List;
 
@@ -18,17 +13,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = OrderCommandController.class)
-class OrderCommandControllerTest {
+class OrderCommandControllerTest extends ControllerTestSupport {
 
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @MockitoBean
-    private OrderCommandUsecase orderUsecase;
 
     @Test
     @DisplayName("신규 주문을 등록한다.")
